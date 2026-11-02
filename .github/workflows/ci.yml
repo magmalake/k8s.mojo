@@ -1,0 +1,67 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  unit:
+    name: ${{ matrix.env == 'default' && 'stable' || matrix.env }} / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        env: [default, nightly]
+    defaults:
+      run:
+        working-directory: k8s.mojo
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: k8s.mojo
+      # The nightly compiles flare, json and threads from checkouts next to
+      # this one, at the revisions pixi.toml pins for stable.
+      - if: matrix.env == 'nightly'
+        uses: actions/checkout@v4
+        with: {repository: magmalake/flare_mlake, ref: 0cb5005489bb1af57ca0421b8f0fcd206bbacf42, path: flare_mlake}
+      - if: matrix.env == 'nightly'
+        uses: actions/checkout@v4
+        with: {repository: magmalake/json_mlake, ref: d850b1c90487e1e9a88ac87d1c1d7f53ffba7276, path: json_mlake}
+      - if: matrix.env == 'nightly'
+        uses: actions/checkout@v4
+        with: {repository: magmalake/threads.mojo, ref: f45e780a8de77278c140cee36904e46e93e0ca1c, path: threads.mojo}
+      - uses: prefix-dev/setup-pixi@v0.10.2
+        with:
+          pixi-version: v0.78.0
+          environments: ${{ matrix.env }}
+          manifest-path: k8s.mojo/pixi.toml
+      - name: Unit tests
+        run: pixi run -e ${{ matrix.env }} unit
+
+  # The calls against a live cluster: kind on the runner's docker.
+  kind:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: helm/kind-action@v1.15.1
+        with:
+          install_only: true
+      - uses: prefix-dev/setup-pixi@v0.10.2
+        with:
+          pixi-version: v0.78.0
+          environments: default
+      - name: Pods, services and jobs on a kind cluster
+        run: pixi run kind
+
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: prefix-dev/setup-pixi@v0.10.2
+        with:
+          pixi-version: v0.78.0
+          environments: fmt
+      - name: mojo format leaves the tree unchanged
+        run: pixi run -e fmt format-check

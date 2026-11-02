@@ -1,0 +1,66 @@
+[workspace]
+authors = ["Marius S <39998+winding-lines@users.noreply.github.com>"]
+channels = ["https://conda.modular.com/max-nightly", "conda-forge"]
+name = "k8s.mojo"
+version = "0.1.0"
+description = "A small Kubernetes client for Mojo: pods, jobs and services, created, listed, watched and deleted, in-cluster or from a kubeconfig."
+license = "Apache-2.0"
+preview = ["pixi-build"]
+platforms = ["osx-arm64", "linux-64", "linux-aarch64"]
+
+[tasks]
+# Server-free: the YAML subset, kubeconfigs, query escaping.
+unit = { cmd = "mkdir -p build && mojo build -I src $DEP_INC tests/test_config.mojo -o build/test-config && ./build/test-config" }
+# Against a live cluster: creates a kind cluster unless KIND_CLUSTER names
+# one that's up. Needs docker, kind and kubectl.
+kind = { cmd = "tests/kind.sh" }
+test = { depends-on = ["unit"] }
+
+# HTTPS and TLS come from flare, JSON from json, both at the revisions
+# mojoshelf published as flare_mlake 0.13.0 and json_mlake 0.4.2, which orca
+# pins too.
+[feature.stable.dependencies]
+mojo-compiler = "==1.2.0"
+flare_mlake = { git = "https://github.com/magmalake/flare_mlake", rev = "0cb5005489bb1af57ca0421b8f0fcd206bbacf42" }
+json_mlake = { git = "https://github.com/magmalake/json_mlake", rev = "d850b1c90487e1e9a88ac87d1c1d7f53ffba7276" }
+threads-mojo = { git = "https://github.com/magmalake/threads.mojo", rev = "f45e780a8de77278c140cee36904e46e93e0ca1c" }
+
+[feature.stable.activation.env]
+DEP_INC = ""
+
+# A precompiled package only loads in the compiler that built it, so the
+# nightly compiles flare, json and threads from checkouts next to this one
+# (CI lays them out at the revisions above), and builds flare's native shims
+# from its activation scripts, as orca's nightly does.
+[feature.nightly.dependencies]
+modular = ">=26.8.0.dev2026102305,<28"
+openssl = ">=3.0,<4"
+zlib = ">=1.3.1,<2"
+libdeflate = ">=1.22,<2"
+
+[feature.nightly.target.linux-64.dependencies]
+gxx = ">=13"
+sysroot_linux-64 = ">=2.34"
+
+[feature.nightly.target.linux-aarch64.dependencies]
+gxx = ">=13"
+
+[feature.nightly.activation]
+scripts = ["../flare_mlake/flare/tls/ffi/build.sh", "../flare_mlake/flare/http/ffi/build.sh"]
+
+[feature.nightly.activation.env]
+DEP_INC = "-I ../flare_mlake -I ../json_mlake -I ../threads.mojo/src -I ../threads.mojo/compat"
+
+# `mojo format` has no check mode, so format-check formats and then asserts
+# the tree did not move.
+[feature.fmt.dependencies]
+modular = ">=26.8.0.dev2026102305,<28"
+
+[feature.fmt.tasks]
+fmt = { cmd = "mojo format src tests" }
+format-check = { cmd = "mojo format src tests && git diff --exit-code -- src tests" }
+
+[environments]
+default = ["stable"]
+nightly = ["nightly"]
+fmt = { features = ["fmt"], no-default-feature = true }
