@@ -1,5 +1,5 @@
 """The calls: create, get, delete, list and watch, for Pods, Services and
-Jobs in a namespace.
+Jobs in a namespace, and a pod's log.
 
 ```mojo
 var k = Client(Config.load())
@@ -240,6 +240,21 @@ struct Client(Movable):
         if resp.status != 200:
             raise _failure("GET", path, resp.status, resp.text())
         return loads(resp.text())
+
+    def logs(
+        self, pod: String, container: String = "", namespace: String = ""
+    ) raises -> String:
+        """A pod's log, of its only container or of `container`; empty for
+        a pod that's gone."""
+        var path = String(self._path(PODS, namespace, pod), "/log")
+        if container:
+            path.write("?container=", query_escape(container))
+        var resp = self._send("GET", path)
+        if resp.status == 404:
+            return ""
+        if resp.status != 200:
+            raise _failure("GET", path, resp.status, resp.text())
+        return resp.text()
 
     def delete(
         self,

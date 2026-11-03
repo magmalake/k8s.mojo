@@ -1,7 +1,8 @@
 """Against a live cluster, in the namespace `K8S_TEST_NAMESPACE`, with the
 kubeconfig's credentials; tests/kind.sh sets it up.
 
-- a pod is created, watched to `Succeeded`, and listed by its label;
+- a pod is created, watched to `Succeeded`, listed by its label, and its
+  log read;
 - a Service and a Job are created and got, and the Job watched to done;
 - `delete_all` deletes everything with the label, and gets answer None;
 - the API's refusals raise with its message: a spec it finds invalid (422),
@@ -84,6 +85,11 @@ def main() raises:
     )
     _check(_phase(k.get(PODS, "smoke").value()) == "Succeeded", "get")
     _check(not k.get(PODS, "no-such-pod"), "get of no pod")
+    _check(
+        k.logs("smoke") == "hello\n",
+        String("the pod's log: '", k.logs("smoke"), "'"),
+    )
+    _check(k.logs("no-such-pod") == "", "the log of no pod")
 
     # A Service and a Job.
     _ = k.create(
