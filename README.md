@@ -19,6 +19,21 @@ while True:
 _ = k.delete_all(PODS, "orca.run=7")
 ```
 
+## Install
+
+```sh
+pixi shelf add k8s-mojo
+```
+
+It's a [mojoshelf](https://github.com/mojoshelf/mojoshelf) tin, built for
+Mojo 1.2. Or pin it as a git dependency in `pixi.toml`:
+
+```toml
+k8s-mojo = { git = "https://github.com/magmalake/k8s.mojo", rev = "<commit>" }
+```
+
+## What it is
+
 It's what [orca](https://github.com/magmalake/orca.mojo) uses to start a
 dista cluster per run (its phase 5), and what
 [dista](https://github.com/magmalake/dista.mojo)'s cluster command can share.
