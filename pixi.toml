@@ -16,9 +16,37 @@ unit = { cmd = "mkdir -p build && mojo build -I src $DEP_INC tests/test_config.m
 kind = { cmd = "tests/kind.sh" }
 test = { depends-on = ["unit"] }
 
+[package]
+name = "k8s-mojo"
+version = "0.1.0"
+
+[package.build]
+backend = { name = "pixi-build-mojo", version = "0.*" }
+
+[package.build.config.pkg]
+path = "src/k8s"
+name = "k8s"
+# The dependencies' .mojoc files, which their packages install there.
+extra-args = ["-I", "$PREFIX/lib/mojo"]
+
+[package.host-dependencies]
+mojo-compiler = "==1.2.0"
+flare_mlake = { git = "https://github.com/magmalake/flare_mlake", rev = "0cb5005489bb1af57ca0421b8f0fcd206bbacf42" }
+json_mlake = { git = "https://github.com/magmalake/json_mlake", rev = "d850b1c90487e1e9a88ac87d1c1d7f53ffba7276" }
+threads-mojo = { git = "https://github.com/magmalake/threads.mojo", rev = "f45e780a8de77278c140cee36904e46e93e0ca1c" }
+
+[package.build-dependencies]
+mojo-compiler = "==1.2.0"
+
+[package.run-dependencies]
+mojo-compiler = ">=1.2.0,<2"
+flare_mlake = { git = "https://github.com/magmalake/flare_mlake", rev = "0cb5005489bb1af57ca0421b8f0fcd206bbacf42" }
+json_mlake = { git = "https://github.com/magmalake/json_mlake", rev = "d850b1c90487e1e9a88ac87d1c1d7f53ffba7276" }
+threads-mojo = { git = "https://github.com/magmalake/threads.mojo", rev = "f45e780a8de77278c140cee36904e46e93e0ca1c" }
+
 # HTTPS and TLS come from flare, JSON from json, both at the revisions
-# mojoshelf published as flare_mlake 0.13.0 and json_mlake 0.4.2, which orca
-# pins too.
+# mojoshelf published as flare_mlake 0.13.0 and json_mlake 0.4.2 (and threads
+# as threads-mojo 0.6.1), which orca pins too.
 [feature.stable.dependencies]
 mojo-compiler = "==1.2.0"
 flare_mlake = { git = "https://github.com/magmalake/flare_mlake", rev = "0cb5005489bb1af57ca0421b8f0fcd206bbacf42" }
