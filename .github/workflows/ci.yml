@@ -25,10 +25,10 @@ jobs:
       # this one, at the revisions pixi.toml pins for stable.
       - if: matrix.env == 'nightly'
         uses: actions/checkout@v4
-        with: {repository: magmalake/flare_mlake, ref: 0cb5005489bb1af57ca0421b8f0fcd206bbacf42, path: flare_mlake}
+        with: {repository: magmalake/flare_mlake, ref: 541259f938dd2913f691a8facc06882fb8f47ca0, path: flare_mlake}
       - if: matrix.env == 'nightly'
         uses: actions/checkout@v4
-        with: {repository: magmalake/json_mlake, ref: d850b1c90487e1e9a88ac87d1c1d7f53ffba7276, path: json_mlake}
+        with: {repository: magmalake/json_mlake, ref: bcaa7161e757748a1310a213e123bf8810ff7e96, path: json_mlake}
       - if: matrix.env == 'nightly'
         uses: actions/checkout@v4
         with: {repository: magmalake/threads.mojo, ref: f45e780a8de77278c140cee36904e46e93e0ca1c, path: threads.mojo}
