@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.2 (2026-11-03)
+
+- Built against flare_mlake 0.13.2, which declares `fcntl` variadic as dista
+  and orca do, so a Linux program can link k8s (and flare's client) beside
+  dista. The stable environment and the CI checkouts pin the same revision.
+
 ## 0.1.1 (2026-11-03)
 
 - Built against flare_mlake 0.13.1 and json_mlake 0.4.3, the releases whose
