@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.1 (2026-11-03)
+
+- Built against flare_mlake 0.13.1 and json_mlake 0.4.3, the releases whose
+  shims are found without `CONDA_PREFIX` and raise an Error instead of
+  aborting when missing. The stable environment and the CI checkouts pin
+  the same revisions.
+
 ## 0.1.0 (2026-11-03)
 
 The first release, what [orca](https://github.com/magmalake/orca.mojo) uses to
