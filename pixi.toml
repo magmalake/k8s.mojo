@@ -2,7 +2,7 @@
 authors = ["Marius S <39998+winding-lines@users.noreply.github.com>"]
 channels = ["https://conda.modular.com/max-nightly", "conda-forge"]
 name = "k8s.mojo"
-version = "0.1.2"
+version = "0.1.3"
 description = "A small Kubernetes client for Mojo: pods, jobs and services, created, listed, watched and deleted, in-cluster or from a kubeconfig."
 license = "Apache-2.0"
 preview = ["pixi-build"]
@@ -18,7 +18,7 @@ test = { depends-on = ["unit"] }
 
 [package]
 name = "k8s-mojo"
-version = "0.1.2"
+version = "0.1.3"
 
 [package.build]
 backend = { name = "pixi-build-mojo", version = "0.*" }
@@ -31,8 +31,8 @@ extra-args = ["-I", "$PREFIX/lib/mojo"]
 
 [package.host-dependencies]
 mojo-compiler = "==1.2.0"
-flare_mlake = { git = "https://github.com/magmalake/flare_mlake", rev = "b1371866a7844afefe86b25eb8af58aaa9d3fa6c" }
-json_mlake = { git = "https://github.com/magmalake/json_mlake", rev = "bcaa7161e757748a1310a213e123bf8810ff7e96" }
+flare_mlake = { git = "https://github.com/magmalake/flare_mlake", rev = "dc1012dafd3b6b32dfe83121d71c8f2fc58f0ffa" }
+json_mlake = { git = "https://github.com/magmalake/json_mlake", rev = "02d0c9611e7598331f2194927201f80a5fb231f8" }
 threads-mojo = { git = "https://github.com/magmalake/threads.mojo", rev = "f45e780a8de77278c140cee36904e46e93e0ca1c" }
 
 [package.build-dependencies]
@@ -40,8 +40,8 @@ mojo-compiler = "==1.2.0"
 
 [package.run-dependencies]
 mojo-compiler = ">=1.2.0,<2"
-flare_mlake = { git = "https://github.com/magmalake/flare_mlake", rev = "b1371866a7844afefe86b25eb8af58aaa9d3fa6c" }
-json_mlake = { git = "https://github.com/magmalake/json_mlake", rev = "bcaa7161e757748a1310a213e123bf8810ff7e96" }
+flare_mlake = { git = "https://github.com/magmalake/flare_mlake", rev = "dc1012dafd3b6b32dfe83121d71c8f2fc58f0ffa" }
+json_mlake = { git = "https://github.com/magmalake/json_mlake", rev = "02d0c9611e7598331f2194927201f80a5fb231f8" }
 threads-mojo = { git = "https://github.com/magmalake/threads.mojo", rev = "f45e780a8de77278c140cee36904e46e93e0ca1c" }
 
 # HTTPS and TLS come from flare, JSON from json, both at the revisions
@@ -49,8 +49,8 @@ threads-mojo = { git = "https://github.com/magmalake/threads.mojo", rev = "f45e7
 # as threads-mojo 0.6.1), which orca pins too.
 [feature.stable.dependencies]
 mojo-compiler = "==1.2.0"
-flare_mlake = { git = "https://github.com/magmalake/flare_mlake", rev = "b1371866a7844afefe86b25eb8af58aaa9d3fa6c" }
-json_mlake = { git = "https://github.com/magmalake/json_mlake", rev = "bcaa7161e757748a1310a213e123bf8810ff7e96" }
+flare_mlake = { git = "https://github.com/magmalake/flare_mlake", rev = "dc1012dafd3b6b32dfe83121d71c8f2fc58f0ffa" }
+json_mlake = { git = "https://github.com/magmalake/json_mlake", rev = "02d0c9611e7598331f2194927201f80a5fb231f8" }
 threads-mojo = { git = "https://github.com/magmalake/threads.mojo", rev = "f45e780a8de77278c140cee36904e46e93e0ca1c" }
 
 [feature.stable.activation.env]
