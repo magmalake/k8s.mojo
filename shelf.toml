@@ -1,5 +1,5 @@
 name = "k8s-mojo"
-version = "0.1.2"
+version = "0.1.3"
 description = "A small Kubernetes client for Mojo: pods, jobs and services created, listed, watched and deleted, and pods' logs, in-cluster or from a kubeconfig"
 tags = ["kubernetes", "k8s", "client", "cluster", "magmalake"]
 # other tins this one depends on; omit if none
