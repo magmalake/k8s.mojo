@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- Built against json_mlake 0.5.1 and flare_mlake 0.14.1, the patch releases
+  whose packages record their real versions and whose flare.mojoc is built
+  against json_mlake 0.5.1. The stable environment and the CI checkouts pin
+  the same revisions.
+
 ## 0.1.2 (2026-11-03)
 
 - Built against flare_mlake 0.13.2, which declares `fcntl` variadic as dista
