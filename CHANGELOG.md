@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.1.4 - 2026-11-14
+
 - Built against json_mlake 0.5.1 and flare_mlake 0.14.1, the patch releases
   whose packages record their real versions and whose flare.mojoc is built
   against json_mlake 0.5.1. The stable environment and the CI checkouts pin
