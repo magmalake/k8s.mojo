@@ -103,11 +103,19 @@ jobs:
       - name: mojo format leaves the tree unchanged
         run: pixi run -e fmt format-check
 
+  # Imports: no cycles between modules, and each name imported from the
+  # module that defines it (github.com/ouromo/customs).
+  customs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ouromo/customs@v0.2.0
+
   # The one check to require: every job above passed or, on a release-only PR,
   # was skipped in favour of the release job's consumer build.
   ci:
     if: ${{ always() && github.event_name != 'schedule' }}
-    needs: [release, release-check, unit, kind, format]
+    needs: [release, release-check, unit, kind, format, customs]
     runs-on: ubuntu-latest
     steps:
       - env:
