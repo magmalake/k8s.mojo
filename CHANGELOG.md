@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 0.1.5 - 2026-11-17
+
+### Changed
+
+- Pins flare_mlake 0.14.2.
+
 ## 0.1.4 - 2026-11-14
 
 - Built against json_mlake 0.5.1 and flare_mlake 0.14.1, the patch releases
