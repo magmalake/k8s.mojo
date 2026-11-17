@@ -31,7 +31,7 @@ extra-args = ["-I", "$PREFIX/lib/mojo"]
 
 [package.host-dependencies]
 mojo-compiler = "==1.2.0"
-flare_mlake = { git = "https://github.com/magmalake/flare_mlake", rev = "7999421f23ea2717a8596211f70d41fc44ef1ec0" }
+flare_mlake = { git = "https://github.com/magmalake/flare_mlake", rev = "898dd6a76692a55750688a6c53d917c8e797759b" }
 json_mlake = { git = "https://github.com/magmalake/json_mlake", rev = "27c05c1c0c2881abfb33ce8eefae4d44d8b602a9" }
 threads-mojo = { git = "https://github.com/magmalake/threads.mojo", rev = "f45e780a8de77278c140cee36904e46e93e0ca1c" }
 
@@ -40,7 +40,7 @@ mojo-compiler = "==1.2.0"
 
 [package.run-dependencies]
 mojo-compiler = ">=1.2.0,<2"
-flare_mlake = { git = "https://github.com/magmalake/flare_mlake", rev = "7999421f23ea2717a8596211f70d41fc44ef1ec0" }
+flare_mlake = { git = "https://github.com/magmalake/flare_mlake", rev = "898dd6a76692a55750688a6c53d917c8e797759b" }
 json_mlake = { git = "https://github.com/magmalake/json_mlake", rev = "27c05c1c0c2881abfb33ce8eefae4d44d8b602a9" }
 threads-mojo = { git = "https://github.com/magmalake/threads.mojo", rev = "f45e780a8de77278c140cee36904e46e93e0ca1c" }
 
@@ -49,7 +49,7 @@ threads-mojo = { git = "https://github.com/magmalake/threads.mojo", rev = "f45e7
 # as threads-mojo 0.6.1), which morca pins too.
 [feature.stable.dependencies]
 mojo-compiler = "==1.2.0"
-flare_mlake = { git = "https://github.com/magmalake/flare_mlake", rev = "7999421f23ea2717a8596211f70d41fc44ef1ec0" }
+flare_mlake = { git = "https://github.com/magmalake/flare_mlake", rev = "898dd6a76692a55750688a6c53d917c8e797759b" }
 json_mlake = { git = "https://github.com/magmalake/json_mlake", rev = "27c05c1c0c2881abfb33ce8eefae4d44d8b602a9" }
 threads-mojo = { git = "https://github.com/magmalake/threads.mojo", rev = "f45e780a8de77278c140cee36904e46e93e0ca1c" }
 
