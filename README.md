@@ -26,7 +26,8 @@ pixi shelf add k8s-mojo
 ```
 
 It's a [mojoshelf](https://github.com/mojoshelf/mojoshelf) tin, built for
-Mojo 1.2. Or pin it as a git dependency in `pixi.toml`:
+the Mojo 1.3 nightly `1.3.0.dev2026111805`. Or pin it as a git dependency in
+`pixi.toml`:
 
 ```toml
 k8s-mojo = { git = "https://github.com/magmalake/k8s.mojo", rev = "<commit>" }

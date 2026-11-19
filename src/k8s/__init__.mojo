@@ -1,4 +1,4 @@
-"""k8s: a small Kubernetes client for Mojo.
+"""`k8s`: a small Kubernetes client for Mojo.
 
 Create, get, delete, list and watch Pods, Services and Jobs, authenticated
 in a pod with its service account or from a kubeconfig:

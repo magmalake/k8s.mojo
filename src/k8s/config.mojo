@@ -157,7 +157,7 @@ def _relative(base: String, path: String) -> String:
     """`path`, relative to the kubeconfig's directory if it isn't absolute."""
     if not path or path.startswith("/"):
         return path
-    var slash = base.rfind("/")
+    var slash = base.rfind("/").or_else(-1)
     return String(base[byte = : slash + 1], path) if slash >= 0 else path
 
 
