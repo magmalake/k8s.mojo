@@ -24,7 +24,6 @@ kubectl create namespace "$K8S_TEST_NAMESPACE"
 kubectl -n "$K8S_TEST_NAMESPACE" create serviceaccount nobody
 K8S_TEST_TOKEN=$(kubectl -n "$K8S_TEST_NAMESPACE" create token nobody)
 export K8S_TEST_TOKEN
-# shellcheck disable=SC2086
-mojo build -I src $DEP_INC tests/kind_client.mojo -o build/kind-client
+mojo build -I src tests/kind_client.mojo -o build/kind-client
 ./build/kind-client
 echo "ok   kind"

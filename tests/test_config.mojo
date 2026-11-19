@@ -122,9 +122,11 @@ def test_kubeconfig_client_certs() raises:
         with open(pair[0], "r") as f:
             assert_equal(f.read(), pair[1])
     # In one fresh directory of its own.
-    var dir = String(c.key_file[byte = : c.key_file.rfind("/")])
+    var dir = String(c.key_file[byte = : c.key_file.rfind("/").or_else(-1)])
     assert_true("k8s-mojo-" in dir)
-    assert_equal(dir, String(c.ca_file[byte = : c.ca_file.rfind("/")]))
+    assert_equal(
+        dir, String(c.ca_file[byte = : c.ca_file.rfind("/").or_else(-1)])
+    )
 
 
 def test_kubeconfig_contexts() raises:
