@@ -2,7 +2,7 @@
 authors = ["Marius S <39998+winding-lines@users.noreply.github.com>"]
 channels = ["https://conda.modular.com/max-nightly", "conda-forge"]
 name = "k8s.mojo"
-version = "0.1.5"
+version = "0.2.0"
 description = "A small Kubernetes client for Mojo: pods, jobs and services, created, listed, watched and deleted, in-cluster or from a kubeconfig."
 license = "Apache-2.0"
 preview = ["pixi-build"]
@@ -18,7 +18,7 @@ test = { depends-on = ["unit"] }
 
 [package]
 name = "k8s-mojo"
-version = "0.1.5"
+version = "0.2.0"
 
 [package.build]
 backend = { name = "pixi-build-mojo", version = "0.*" }
@@ -31,18 +31,18 @@ extra-args = ["-I", "$PREFIX/lib/mojo"]
 
 [package.host-dependencies]
 mojo-compiler = "==1.3.0.dev2026111805"
-flare_mlake = { git = "https://github.com/magmalake/flare_mlake", rev = "ddcbd552fdd34aa549855d682e59542c18fa2ef2" }
-json_mlake = { git = "https://github.com/magmalake/json_mlake", rev = "115129138868883ae7d0de86651f342220f802e3" }
-threads-mojo = { git = "https://github.com/magmalake/threads.mojo", rev = "820a7c6e8619d49e13f944dfba73328236eb4903" }
+flare_mlake = { git = "https://github.com/magmalake/flare_mlake", rev = "86b8ec7947e381b9c97b36f9cc9e4f38459016f4" }
+json_mlake = { git = "https://github.com/magmalake/json_mlake", rev = "7ea15048ac905386a89d03717e56cef8832b571b" }
+threads-mojo = { git = "https://github.com/magmalake/threads.mojo", rev = "c9da1a84f4f2d624043df97b90bb44f8e8b5256b" }
 
 [package.build-dependencies]
 mojo-compiler = "==1.3.0.dev2026111805"
 
 [package.run-dependencies]
 mojo-compiler = "==1.3.0.dev2026111805"
-flare_mlake = { git = "https://github.com/magmalake/flare_mlake", rev = "ddcbd552fdd34aa549855d682e59542c18fa2ef2" }
-json_mlake = { git = "https://github.com/magmalake/json_mlake", rev = "115129138868883ae7d0de86651f342220f802e3" }
-threads-mojo = { git = "https://github.com/magmalake/threads.mojo", rev = "820a7c6e8619d49e13f944dfba73328236eb4903" }
+flare_mlake = { git = "https://github.com/magmalake/flare_mlake", rev = "86b8ec7947e381b9c97b36f9cc9e4f38459016f4" }
+json_mlake = { git = "https://github.com/magmalake/json_mlake", rev = "7ea15048ac905386a89d03717e56cef8832b571b" }
+threads-mojo = { git = "https://github.com/magmalake/threads.mojo", rev = "c9da1a84f4f2d624043df97b90bb44f8e8b5256b" }
 
 # One toolchain: the tin, its tests and every consumer use the same Mojo
 # nightly. A precompiled Mojo package (.mojoc) loads only in the compiler
@@ -51,9 +51,9 @@ threads-mojo = { git = "https://github.com/magmalake/threads.mojo", rev = "820a7
 # JSON from json, both (and threads) at their ports to the same nightly.
 [dependencies]
 mojo-compiler = "==1.3.0.dev2026111805"
-flare_mlake = { git = "https://github.com/magmalake/flare_mlake", rev = "ddcbd552fdd34aa549855d682e59542c18fa2ef2" }
-json_mlake = { git = "https://github.com/magmalake/json_mlake", rev = "115129138868883ae7d0de86651f342220f802e3" }
-threads-mojo = { git = "https://github.com/magmalake/threads.mojo", rev = "820a7c6e8619d49e13f944dfba73328236eb4903" }
+flare_mlake = { git = "https://github.com/magmalake/flare_mlake", rev = "86b8ec7947e381b9c97b36f9cc9e4f38459016f4" }
+json_mlake = { git = "https://github.com/magmalake/json_mlake", rev = "7ea15048ac905386a89d03717e56cef8832b571b" }
+threads-mojo = { git = "https://github.com/magmalake/threads.mojo", rev = "c9da1a84f4f2d624043df97b90bb44f8e8b5256b" }
 
 # `mojo format` has no check mode, so format-check formats and then asserts
 # the tree did not move.
