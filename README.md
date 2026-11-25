@@ -1,5 +1,7 @@
 # k8s
 
+[![Used by](https://mojourney.dev/badge/magmalake/k8s.mojo/used-by.svg)](https://mojourney.dev/repos/magmalake/k8s.mojo#used-by) [![Mojo version](https://mojourney.dev/badge/magmalake/k8s.mojo/mojo.svg)](https://mojourney.dev/repos/magmalake/k8s.mojo)
+
 A small Kubernetes client for Mojo: create, get, delete, list and watch the
 few resources a data pipeline's orchestrator needs (Pods, Services and Jobs
 in a namespace), authenticated in a pod with its service account or from a
