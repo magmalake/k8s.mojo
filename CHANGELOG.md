@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 0.2.2 - 2026-11-26
+
+### Changed
+
+- Pins flare_mlake 0.15.2, json_mlake 0.6.2, threads-mojo 0.7.2.
+
 ## 0.2.1 - 2026-11-25
 
 ### Changed
