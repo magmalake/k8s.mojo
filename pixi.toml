@@ -31,8 +31,8 @@ extra-args = ["-I", "$PREFIX/lib/mojo"]
 
 [package.host-dependencies]
 mojo-compiler = "==1.3.0.dev2026112605"
-flare_mlake = { git = "https://github.com/magmalake/flare_mlake", rev = "3a6315755499c8a253d7d1bd043a21e2e11afe81" }
-json_mlake = { git = "https://github.com/magmalake/json_mlake", rev = "8e9fb08c2cbe0753d090d5303929ca3c87180946" }
+flare_mlake = { git = "https://github.com/magmalake/flare_mlake", rev = "5377586cdd4088ea43100058818e5ae8cab6d369" }
+json_mlake = { git = "https://github.com/magmalake/json_mlake", rev = "af0329b8a8475f9f997b4de687a7dbd26741afe8" }
 threads-mojo = { git = "https://github.com/magmalake/threads.mojo", rev = "215abd5c3fd47e38ef14b44fd32dceb6059c134f" }
 
 [package.build-dependencies]
@@ -40,8 +40,8 @@ mojo-compiler = "==1.3.0.dev2026112605"
 
 [package.run-dependencies]
 mojo-compiler = "==1.3.0.dev2026112605"
-flare_mlake = { git = "https://github.com/magmalake/flare_mlake", rev = "3a6315755499c8a253d7d1bd043a21e2e11afe81" }
-json_mlake = { git = "https://github.com/magmalake/json_mlake", rev = "8e9fb08c2cbe0753d090d5303929ca3c87180946" }
+flare_mlake = { git = "https://github.com/magmalake/flare_mlake", rev = "5377586cdd4088ea43100058818e5ae8cab6d369" }
+json_mlake = { git = "https://github.com/magmalake/json_mlake", rev = "af0329b8a8475f9f997b4de687a7dbd26741afe8" }
 threads-mojo = { git = "https://github.com/magmalake/threads.mojo", rev = "215abd5c3fd47e38ef14b44fd32dceb6059c134f" }
 
 # One toolchain: the tin, its tests and every consumer use the same Mojo
@@ -51,8 +51,8 @@ threads-mojo = { git = "https://github.com/magmalake/threads.mojo", rev = "215ab
 # JSON from json, both (and threads) at their ports to the same nightly.
 [dependencies]
 mojo-compiler = "==1.3.0.dev2026112605"
-flare_mlake = { git = "https://github.com/magmalake/flare_mlake", rev = "3a6315755499c8a253d7d1bd043a21e2e11afe81" }
-json_mlake = { git = "https://github.com/magmalake/json_mlake", rev = "8e9fb08c2cbe0753d090d5303929ca3c87180946" }
+flare_mlake = { git = "https://github.com/magmalake/flare_mlake", rev = "5377586cdd4088ea43100058818e5ae8cab6d369" }
+json_mlake = { git = "https://github.com/magmalake/json_mlake", rev = "af0329b8a8475f9f997b4de687a7dbd26741afe8" }
 threads-mojo = { git = "https://github.com/magmalake/threads.mojo", rev = "215abd5c3fd47e38ef14b44fd32dceb6059c134f" }
 
 # `mojo format` has no check mode, so format-check formats and then asserts
